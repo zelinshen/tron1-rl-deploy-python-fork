@@ -25,7 +25,7 @@ if __name__ == '__main__':
     robot = Robot(RobotType.PointFoot)
 
     # Default IP address for the robot
-    robot_ip = "127.0.0.1"
+    robot_ip = "10.192.1.2" # "127.0.0.1"
     
     # Check if command-line argument is provided for robot IP
     if len(sys.argv) > 1:

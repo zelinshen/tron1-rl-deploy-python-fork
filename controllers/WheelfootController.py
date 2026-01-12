@@ -186,7 +186,7 @@ class WheelfootController:
         self.robot_cmd.tau = [0. for x in range(0, self.joint_num)]
         self.robot_cmd.Kp = [0. for x in range(0, self.joint_num)]
         self.robot_cmd.Kd = [1.0 for x in range(0, self.joint_num)]
-        self.robot.publishRobotCmd(self.robot_cmd)
+        # self.robot.publishRobotCmd(self.robot_cmd)
         time.sleep(1)
 
     # Handle the stand mode for smoothly transitioning the robot into standing
@@ -402,9 +402,11 @@ class WheelfootController:
 
         # Run the encoder session and get the output
         output = self.encoder_session.run(self.encoder_output_names, inputs)
+        # print(f"output: {output}")
 
         # Flatten the output and store it as the encoder output
         self.encoder_out = np.array(output).flatten()
+        print(f"encoder_out: {self.encoder_out}")
  
     def set_joint_command(self, joint_index, q, dq, tau, kp, kd):
         """
@@ -439,7 +441,7 @@ class WheelfootController:
         self.loop_count += 1
 
         # Publish the robot command
-        self.robot.publishRobotCmd(self.robot_cmd)
+        # self.robot.publishRobotCmd(self.robot_cmd)
         
     # Callback function for receiving robot command data
     def robot_state_callback(self, robot_state: datatypes.RobotState):
